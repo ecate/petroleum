@@ -1,0 +1,71 @@
+<h1>Listing soldiers</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Active</th>
+    <th>Ismale</th>
+    <th>Firstname</th>
+    <th>Familyname</th>
+    <th>Usagename</th>
+    <th>Birthdate</th>
+    <th>Payid</th>
+    <th>Concertoid</th>
+    <th>Ssid</th>
+    <th>Iscivilservant</th>
+    <th>Publicoffice</th>
+    <th>Employername</th>
+    <th>Jobname</th>
+    <th>Persoemail</th>
+    <th>Profemail</th>
+    <th>Persolandphone</th>
+    <th>Proflandphone</th>
+    <th>Persomobilephone</th>
+    <th>Profmobilephone</th>
+    <th>Preferedemail</th>
+    <th>Preferedphone</th>
+    <th>Issma</th>
+    <th>Isvsl</th>
+    <th>Isgct</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @soldiers.each do |soldier| %>
+  <tr>
+    <td><%= soldier.id %></td>
+    <td><%= soldier.active %></td>
+    <td><%= soldier.ismale %></td>
+    <td><%= soldier.firstname %></td>
+    <td><%= soldier.familyname %></td>
+    <td><%= soldier.usagename %></td>
+    <td><%= soldier.birthdate %></td>
+    <td><%= soldier.payid %></td>
+    <td><%= soldier.concertoid %></td>
+    <td><%= soldier.ssid %></td>
+    <td><%= soldier.iscivilservant %></td>
+    <td><%= soldier.publicoffice %></td>
+    <td><%= soldier.employername %></td>
+    <td><%= soldier.jobname %></td>
+    <td><%= soldier.persoemail %></td>
+    <td><%= soldier.profemail %></td>
+    <td><%= soldier.persolandphone %></td>
+    <td><%= soldier.proflandphone %></td>
+    <td><%= soldier.persomobilephone %></td>
+    <td><%= soldier.profmobilephone %></td>
+    <td><%= soldier.preferedemail %></td>
+    <td><%= soldier.preferedphone %></td>
+    <td><%= soldier.issma %></td>
+    <td><%= soldier.isvsl %></td>
+    <td><%= soldier.isgct %></td>
+    <td><%= link_to 'Show', soldier %></td>
+    <td><%= link_to 'Edit', edit_soldier_path(soldier) %></td>
+    <td><%= link_to 'Destroy', soldier, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Soldier', new_soldier_path %>

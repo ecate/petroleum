@@ -1,0 +1,22 @@
+<%= form_for(@corp) do |f| %>
+  <% if @corp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@corp.errors.count, "error") %> prohibited this corp from being saved:</h2>
+
+      <ul>
+      <% @corp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :libelle %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

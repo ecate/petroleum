@@ -1,0 +1,2 @@
+module RankslistHelper
+end

@@ -1,0 +1,23 @@
+<h1>Listing corps</h1>
+
+<table>
+  <tr>
+    <th>Libelle</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @corps.each do |corp| %>
+  <tr>
+    <td><%= corp.name %></td>
+    <td><%= link_to 'Show', corp %></td>
+    <td><%= link_to 'Edit', edit_corp_path(corp) %></td>
+    <td><%= link_to 'Destroy', corp, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Corp', new_corp_path %>

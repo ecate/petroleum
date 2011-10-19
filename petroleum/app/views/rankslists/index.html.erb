@@ -1,0 +1,31 @@
+<h1>Listing rankslists</h1>
+
+<table>
+  <tr>
+    <th>Soldat</th>
+    <th>Grade</th>
+    <th>Corp</th>
+    <th>Prise de rang grade</th>
+    <th>Entree categorie</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rankslists.each do |rankslist| %>
+  <tr>
+    <td><%= rankslist.soldier.familyname %></td>
+    <td><%= rankslist.rank_id %></td>
+    <td><%= rankslist %></td>
+    <td><%= rankslist.beginrankdate %></td>
+    <td><%= rankslist.begincorpdate %></td>
+    <td><%= link_to 'Show', rankslist %></td>
+    <td><%= link_to 'Edit', edit_rankslist_path(rankslist) %></td>
+    <td><%= link_to 'Destroy', rankslist, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New rankslist', new_rankslist_path %>

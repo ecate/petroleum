@@ -1,0 +1,114 @@
+<%= form_for(@soldier) do |f| %>
+  <% if @soldier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@soldier.errors.count, "error") %> prohibited this soldier from being saved:</h2>
+
+      <ul>
+      <% @soldier.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :ismale %><br />
+    <%= f.check_box :ismale %>
+  </div>
+  <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :familyname %><br />
+    <%= f.text_field :familyname %>
+  </div>
+  <div class="field">
+    <%= f.label :usagename %><br />
+    <%= f.text_field :usagename %>
+  </div>
+  <div class="field">
+    <%= f.label :birthdate %><br />
+    <%= f.date_select :birthdate %>
+  </div>
+  <div class="field">
+    <%= f.label :payid %><br />
+    <%= f.number_field :payid %>
+  </div>
+  <div class="field">
+    <%= f.label :concertoid %><br />
+    <%= f.number_field :concertoid %>
+  </div>
+  <div class="field">
+    <%= f.label :ssid %><br />
+    <%= f.number_field :ssid %>
+  </div>
+  <div class="field">
+    <%= f.label :iscivilservant %><br />
+    <%= f.check_box :iscivilservant %>
+  </div>
+  <div class="field">
+    <%= f.label :publicoffice %><br />
+    <%= f.text_field :publicoffice %>
+  </div>
+  <div class="field">
+    <%= f.label :employername %><br />
+    <%= f.text_field :employername %>
+  </div>
+  <div class="field">
+    <%= f.label :jobname %><br />
+    <%= f.text_field :jobname %>
+  </div>
+  <div class="field">
+    <%= f.label :persoemail %><br />
+    <%= f.text_field :persoemail %>
+  </div>
+  <div class="field">
+    <%= f.label :profemail %><br />
+    <%= f.text_field :profemail %>
+  </div>
+  <div class="field">
+    <%= f.label :persolandphone %><br />
+    <%= f.number_field :persolandphone %>
+  </div>
+  <div class="field">
+    <%= f.label :proflandphone %><br />
+    <%= f.number_field :proflandphone %>
+  </div>
+  <div class="field">
+    <%= f.label :persomobilephone %><br />
+    <%= f.number_field :persomobilephone %>
+  </div>
+  <div class="field">
+    <%= f.label :profmobilephone %><br />
+    <%= f.number_field :profmobilephone %>
+  </div>
+  <div class="field">
+    <%= f.label :preferedemail %><br />
+    <%= f.text_field :preferedemail %>
+  </div>
+  <div class="field">
+    <%= f.label :preferedphone %><br />
+    <%= f.number_field :preferedphone %>
+  </div>
+  <div class="field">
+    <%= f.label :issma %><br />
+    <%= f.check_box :issma %>
+  </div>
+  <div class="field">
+    <%= f.label :isvsl %><br />
+    <%= f.check_box :isvsl %>
+  </div>
+  <div class="field">
+    <%= f.label :isgct %><br />
+    <%= f.check_box :isgct %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
