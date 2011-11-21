@@ -3,7 +3,6 @@ menu :parent => "VSA"
 #scope :courantes, :default => true
 
 filter :soldier, :label => 'Personnel'
-filter :vsaconclusion
 filter :examdate, :label => 'Date examen'
 filter :iscurrent,:label => 'Derniere VSA', :as => :select, :collection => [ ["Non", false], ["Oui", true] ]  
 filter :isapteESR, :label => 'Apte ESR', :as => :select, :collection => [ ["Non", false], ["Oui", true] ]
@@ -25,13 +24,13 @@ end
 
 
 show :title => "VSA" do |vl|
-	@vsalistid = vl.id
     attributes_table do
     	row("Grade") do vl.soldier.rank.name end
     	row("Personnel") do link_to vl.soldier.name, edit_admin_personnel_path(vl.soldier) end
     	row("Libelle") do vl.name end
     	row("Derniere VSA") do vl.iscurrent end
     	row("Date Examen") do vl.examdate end
+    	#row("Conclusion") do vl.conclu end
     	row("Apte ESR") do vl.isapteESR end
     	row("Apte Service") do vl.isapteService end
     	row("Apte Tir") do vl.isapteTir end 
@@ -39,29 +38,12 @@ show :title => "VSA" do |vl|
     	row("VSA avec restrictions Tir") do vl.hastirrestriction end
     	row("Commentaires Docteur/Doctoresse") do vl.doctorcomment end	
     end
- 	
-# 	@listapt = Vsaaptitudeslist.all.find(:vsalist_id => id)
-#  	li "nb"+ @listapt.count 
-# 	@listapt.each do |apt|
-   	#@foo = Vsaaptitude.all.find(:vsaaptitude_id => apt.vsa)
-#   		ul do
-#    		li Vsaaptitude.all.find(:id=> apt.vsaaptitude_id).first.name
-#  		end
-#  	end
 end
 
 sidebar "Liste Aptitudes", :only => :show do
-#   @listapt = Vsaaptitudeslist.all.find(:vsalist_id => @vsalistid)
-#   @listapt.each do |apt|
-#   	ul do
-#    	li Vsaaptitudeslist.all.find(:vsalist_id => @vsalistid).count
-#    	li apt.details
-#  	end
-#   end
 end
 
 sidebar "Liste Restrictions", :only => show do
-
 end
   
 end
