@@ -2,13 +2,12 @@
 
 <table>
   <tr>
-    <th>ID</th>
-    <th>Active</th>
-    <th>Ismale</th>
+    <th>Name</th>
     <th>Firstname</th>
-    <th>Familyname</th>
     <th>Usagename</th>
     <th>Birthdate</th>
+    <th>Active</th>
+    <th>Ismale</th>
     <th>Payid</th>
     <th>Concertoid</th>
     <th>Ssid</th>
@@ -27,6 +26,13 @@
     <th>Issma</th>
     <th>Isvsl</th>
     <th>Isgct</th>
+    <th>L2 balescetageporte</th>
+    <th>L3 resbat</th>
+    <th>L4 numvoie</th>
+    <th>L5 bptsabureau</th>
+    <th>L6 commune</th>
+    <th>L7 codepostal</th>
+    <th>L8 pays</th>
     <th></th>
     <th></th>
     <th></th>
@@ -34,13 +40,12 @@
 
 <% @soldiers.each do |soldier| %>
   <tr>
-    <td><%= soldier.id %></td>
-    <td><%= soldier.active %></td>
-    <td><%= soldier.ismale %></td>
+    <td><%= soldier.name %></td>
     <td><%= soldier.firstname %></td>
-    <td><%= soldier.familyname %></td>
     <td><%= soldier.usagename %></td>
     <td><%= soldier.birthdate %></td>
+    <td><%= soldier.active %></td>
+    <td><%= soldier.ismale %></td>
     <td><%= soldier.payid %></td>
     <td><%= soldier.concertoid %></td>
     <td><%= soldier.ssid %></td>
@@ -59,6 +64,13 @@
     <td><%= soldier.issma %></td>
     <td><%= soldier.isvsl %></td>
     <td><%= soldier.isgct %></td>
+    <td><%= soldier.l2_balescetageporte %></td>
+    <td><%= soldier.l3_resbat %></td>
+    <td><%= soldier.l4_numvoie %></td>
+    <td><%= soldier.l5_bptsabureau %></td>
+    <td><%= soldier.l6_commune %></td>
+    <td><%= soldier.l7_codepostal %></td>
+    <td><%= soldier.l8_pays %></td>
     <td><%= link_to 'Show', soldier %></td>
     <td><%= link_to 'Edit', edit_soldier_path(soldier) %></td>
     <td><%= link_to 'Destroy', soldier, confirm: 'Are you sure?', method: :delete %></td>

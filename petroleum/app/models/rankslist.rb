@@ -3,4 +3,5 @@ class Rankslist < ActiveRecord::Base
     belongs_to :rank
 
     validates :beginrankdate, :begincorpdate, :soldier_id, :rank_id, :presence => {:message => "Donnees obligatoires"}
+    validates :soldier_id, :uniqueness => true
 end

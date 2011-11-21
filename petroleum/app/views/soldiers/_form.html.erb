@@ -10,23 +10,14 @@
       </ul>
     </div>
   <% end %>
-  
 
   <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </div>
-  <div class="field">
-    <%= f.label :ismale %><br />
-    <%= f.check_box :ismale %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :firstname %><br />
     <%= f.text_field :firstname %>
-  </div>
-  <div class="field">
-    <%= f.label :familyname %><br />
-    <%= f.text_field :familyname %>
   </div>
   <div class="field">
     <%= f.label :usagename %><br />
@@ -35,6 +26,14 @@
   <div class="field">
     <%= f.label :birthdate %><br />
     <%= f.date_select :birthdate %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :ismale %><br />
+    <%= f.check_box :ismale %>
   </div>
   <div class="field">
     <%= f.label :payid %><br />
@@ -107,6 +106,34 @@
   <div class="field">
     <%= f.label :isgct %><br />
     <%= f.check_box :isgct %>
+  </div>
+  <div class="field">
+    <%= f.label :l2_balescetageporte %><br />
+    <%= f.text_field :l2_balescetageporte %>
+  </div>
+  <div class="field">
+    <%= f.label :l3_resbat %><br />
+    <%= f.text_field :l3_resbat %>
+  </div>
+  <div class="field">
+    <%= f.label :l4_numvoie %><br />
+    <%= f.text_field :l4_numvoie %>
+  </div>
+  <div class="field">
+    <%= f.label :l5_bptsabureau %><br />
+    <%= f.text_field :l5_bptsabureau %>
+  </div>
+  <div class="field">
+    <%= f.label :l6_commune %><br />
+    <%= f.text_field :l6_commune %>
+  </div>
+  <div class="field">
+    <%= f.label :l7_codepostal %><br />
+    <%= f.number_field :l7_codepostal %>
+  </div>
+  <div class="field">
+    <%= f.label :l8_pays %><br />
+    <%= f.text_field :l8_pays %>
   </div>
   <div class="actions">
     <%= f.submit %>
