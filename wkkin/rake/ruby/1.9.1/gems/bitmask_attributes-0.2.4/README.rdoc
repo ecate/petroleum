@@ -1,0 +1,137 @@
+== BitmaskAttributes
+
+Transparent manipulation of bitmask attributes for ActiveRecord, based on
+the bitmask-attribute gem, which has been dormant since 2009. This updated
+gem work with Rails 3 and up (including Rails 3.1).
+
+
+=== Installation
+
+The best way to install is with RubyGems:
+
+    $ [sudo] gem install bitmask_attributes
+
+Or better still, just add it to your Gemfile:
+
+    gem 'bitmask_attributes'
+
+
+=== Example
+
+Simply declare an existing integer column as a bitmask with its possible
+values.
+
+    class User < ActiveRecord::Base
+      bitmask :roles, :as => [:writer, :publisher, :editor, :proofreader]
+    end
+
+You can then modify the column using the declared values without resorting
+to manual bitmasks.
+
+    user = User.create(:name => "Bruce", :roles => [:publisher, :editor])
+    user.roles
+    # => [:publisher, :editor]
+    user.roles << :writer
+    user.roles
+    # => [:publisher, :editor, :writer]
+
+It's easy to find out if a record has a given value:
+
+    user.roles?(:editor)
+    # => true
+
+You can check for multiple values (uses an `and` boolean):
+
+    user.roles?(:editor, :publisher)
+    # => true
+    user.roles?(:editor, :proofreader)
+    # => false
+
+Or, just check if any values are present:
+
+    user.roles?
+    # => true
+
+You can get the list of values for any given attribute:
+
+    User.values_for_roles
+    # => [:writer, :publisher, :editor, :proofreader]
+
+
+=== Named Scopes
+
+A couple useful named scopes are also generated when you use
+`bitmask`:
+
+    User.with_roles
+    # => (all users with roles)
+    User.with_roles(:editor)
+    # => (all editors)
+    User.with_roles(:editor, :writer)
+    # => (all users who are BOTH editors and writers)
+    User.with_any_roles(:editor, :writer)
+    # => (all users who are editors OR writers)
+
+Find records without any bitmask set:
+
+    User.without_roles
+    # => (all users without a role)
+    User.no_roles
+    # => (all users without a role)
+
+Find records without a specific attribute.
+
+    User.without_roles(:editor)
+    # => (all users who are not editors)
+
+Note that "without_" only supports a single attribute argument, and the "no_" method does not support arguments.
+
+
+=== Adding Methods
+
+You can add your own methods to the bitmasked attributes (similar to
+named scopes):
+
+    bitmask :other_attribute, :as => [:value1, :value2] do
+      def worked?
+        true
+      end
+    end
+
+    user = User.first
+    user.other_attribute.worked?
+    # => true
+
+
+=== Warning: Modifying possible values
+
+IMPORTANT: Once you have data using a bitmask, don't change the order
+of the values, remove any values, or insert any new values in the `:as`
+array anywhere except at the end.  You won't like the results.
+
+
+=== Contributing
+
+1. Fork it.
+2. Create a branch (`git checkout -b new-feature`)
+3. Make your changes
+4. Run the tests (`bundle install` then `bundle exec rake`)
+5. Commit your changes (`git commit -am "Created new feature"`)
+6. Push to the branch (`git push origin new-feature`)
+7. Create a {pull request}[http://help.github.com/send-pull-requests/] from your branch.
+8. Promote it. Get others to drop in and +1 it.
+
+
+=== Credits
+
+Thanks to {Bruce Williams}[https://github.com/bruce] and the following contributors
+of the bitmask-attribute plugin:
+
+* {Jason L Perry}[http://github.com/ambethia]
+* {Nicolas Fouché}[http://github.com/nfo]
+* {Ivan Buiko}[http://github.com/IvanBuiko]
+
+
+=== Copyright
+
+Copyright (c) 2007-2009 Bruce Williams & 2011 Joel Moss. See LICENSE for details.

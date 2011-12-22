@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-#AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
+#AdminUser.create!(:email => 'bureau@comptable.com', :password => 'mourmelon', :password_confirmation => 'mourmelon')
 Corp.create([{ name: "Militaire du rang"},{name: "Sous Officier"},{name: "Officier"}])
 Rank.create([{name: 'Sapeur de 2eme classe',agelimit: 39, corp_id: 1 }, {name: 'Sapeur de 1ere classe', agelimit: 39, corp_id: 1}, {name: 'Caporal', agelimit: 39, corp_id: 1}, {name: 'Caporal-Chef', agelimit: 39, corp_id: 1}, {name: 'Sergent', agelimit: 45, corp_id: 2}, {name: 'Sergent-Chef', agelimit: 46, corp_id: 2},{name: 'Adjudant', agelimit: 49, corp_id: 2},{name: 'Adjudant-Chef', agelimit: 50, corp_id: 2},{name: 'Aspirant', agelimit: 50, corp_id: 3},{name: 'Sous-Lieutenant', agelimit: 52, corp_id: 3},{name: 'Lieutenant', agelimit: 54, corp_id: 3},{name: 'Capitaine', agelimit: 55, corp_id: 3}])
 
@@ -15,21 +15,21 @@ sold1 = Soldier.create(
 	ismale: true,
 	firstname: "Edgar",
 	birthdate: Date.today - 35.years,
-	payid: 5676453,
-	concertoid: 87643003039,
-	ssid: 1780940940490490,
+	payid: 76453,
+	concertoid: 300303,
+	ssid: 90490,
 	iscivilservant: true,
 	publicoffice: "Territorial",
 	employername: "Mairie de Paris",
 	jobname: "Responsable des affaires culturelles",
 	persoemail: "edgar.quinet@free.fr",
 	profemail:"edgar.quinet@paris.fr",
-	persolandphone: '0165656565',
-	proflandphone: '0145980810',
-	persomobilephone: '0607060607',
-	profmobilephone: '0685746204',
+	persolandphone: '01565',
+	proflandphone: '01810',
+	persomobilephone: '06067',
+	profmobilephone: '068204',
 	preferedemail:"edgar.quinet@free.fr",
-	preferedphone: '0685746204',
+	preferedphone: '06204',
 	issma: false,
 	isvsl: true,
 	isgct: false,
@@ -45,20 +45,20 @@ sold2 = Soldier.create(
 	ismale: true,
 	firstname: "Lucas",
 	birthdate: Date.today - (28.years + 2.months + 15.days),
-	payid: 56556453,
-	concertoid: 123503039,
-	ssid: 18304458693,
+	payid: 5653,
+	concertoid: 12039,
+	ssid: 1693,
 	iscivilservant: false,
 	employername: "Pariseau",
 	jobname: "Controleur assurances",
 	persoemail: "LucasChampagne@free.com",
 	profemail:"Lucas.Champagne@pariseau.com",
-	persolandphone: '0165144778',
-	proflandphone: '0145981510',
-	persomobilephone: '0608521445',
-	profmobilephone: '0685478569',
+	persolandphone: '04778',
+	proflandphone: '01410',
+	persomobilephone: '060445',
+	profmobilephone: '06859',
 	preferedemail:"Lucas.Champagne@pariseau.com",
-	preferedphone: '0685478569',
+	preferedphone: '06569',
 	issma: false,
 	isvsl: false,
 	isgct: false,
@@ -76,20 +76,20 @@ sold3 = Soldier.create(
 	ismale: true,
 	firstname: "Jacques",
 	birthdate: Date.today - (42.years - 3.months),
-	payid: 123456,
-	concertoid: 2587412369,
-	ssid: 145125489322,
+	payid: 12356,
+	concertoid: 25849,
+	ssid: 14122,
 	iscivilservant: false,
 	employername: "Tafanel",
 	jobname: "Superviseur logistique",
 	persoemail: "jacquessuper@free.fr",
 	profemail:"jacques.lecoustillier@tafanel.fr",
-	persolandphone: '0112232323',
-	proflandphone: '014547852369',
-	persomobilephone: '060236608',
-	profmobilephone: '0685744526',
+	persolandphone: '32323',
+	proflandphone: '85239',
+	persomobilephone: '6608',
+	profmobilephone: '44526',
 	preferedemail:"jacques.lecoustillier@tafanel.fr",
-	preferedphone: '0685744526',
+	preferedphone: '44526',
 	issma: false,
 	isvsl: false,
 	isgct: true,
@@ -133,17 +133,17 @@ concl2 = Vsaconclusion.create(name:"Apte a servir avec restrictions d'emploi")
 concl3 = Vsaconclusion.create(name:"Apte a servir par derogation", details:"reference/date a preciser")
 concl4 = Vsaconclusion.create(name:"Inapte definitif a servir")
 
-item1 = Esrlist.create(soldier_id: sold1, iscurrent: true, signaturedate: Date.today, enddate: (Date.today + 1.year + 1.month + 5.days), comment: 'premier esr')
-item2 = Esrlist.create(soldier_id: sold2, iscurrent: true, signaturedate: Date.today - 7.month, enddate: (Date.today + 1.year + 2.months), comment: 'signe a besancon')
-item3 = Esrlist.create(soldier_id: sold3, iscurrent: true, signaturedate: Date.today, enddate: (Date.today + 2.years))
+item1 = Esrlist.create(name:"ESR Quinet", soldier_id: sold1, iscurrent: true, signaturedate: Date.today, enddate: (Date.today + 1.year + 1.month + 5.days), comment: 'premier esr')
+item2 = Esrlist.create(name:"ESR Champagne",soldier_id: sold2, iscurrent: true, signaturedate: Date.today - 7.month, enddate: (Date.today + 1.year + 2.months), comment: 'signe a besancon')
+item3 = Esrlist.create(name:"ESR Le Coustillier",soldier_id: sold3, iscurrent: true, signaturedate: Date.today, enddate: (Date.today + 2.years), comment: 'signe au 121 RT')
 
 Esrcontrol.create(esrlist_id: item1, name: "Controle gendarmerie",comment: "controle effectue apres relance")
 Esrcontrol.create(esrlist_id:item2, name: "Confidentiel defense",comment: "valide")
-Esrcontrol.create(esrlist_id: item3 ,name: "Agrement ministere de la defense")
+Esrcontrol.create(esrlist_id: item3 ,name: "Agrement ministere de la defense", comment: "valide avec 19rg")
 
-vsal1 = Vsalist.create(soldier_id: sold1,vsaconclusion_id: concl1,name: "VSA",examdate: (Date.today - 10.days), iscurrent: true,isapteESR:true,isapteService: true,isapteTir: true,hasrestriction: true,hastirrestriction: true,doctorcomment: "Tir double protection")
-vsal2 = Vsalist.create(soldier_id: sold2,vsaconclusion_id: concl1,name: "VSA",examdate: (Date.today - 2.months), iscurrent: true,isapteESR:true,isapteService: true,isapteTir: true,hasrestriction: true,hastirrestriction: true,doctorcomment: "Tir double protection")
-vsal3 = Vsalist.create(soldier_id: sold3,vsaconclusion_id: concl2,name: "VSA",examdate: (Date.today - 3.months), iscurrent: true,isapteESR:true,isapteService: true,isapteTir: true,hasrestriction: true,hastirrestriction: true,doctorcomment: "Tir double protection")
+vsal1 = Vsalist.create(soldier_id: sold1,vsaconclusion_id: concl1,name: "VSA Quinet",examdate: (Date.today - 10.days), iscurrent: true,isapteESR:true,isapteService: true,isapteTir: true,hasrestriction: true,hastirrestriction: true,doctorcomment: "Tir double protection")
+vsal2 = Vsalist.create(soldier_id: sold2,vsaconclusion_id: concl1,name: "VSA Champagne",examdate: (Date.today - 2.months), iscurrent: true,isapteESR:true,isapteService: true,isapteTir: true,hasrestriction: true,hastirrestriction: true,doctorcomment: "Tir double protection")
+vsal3 = Vsalist.create(soldier_id: sold3,vsaconclusion_id: concl2,name: "VSA Le Coustillier",examdate: (Date.today - 3.months), iscurrent: true,isapteESR:true,isapteService: true,isapteTir: true,hasrestriction: true,hastirrestriction: true,doctorcomment: "Tir double protection")
 
 Vsarestrictionslist.create(vsarestriction_id: res5,vsalist_id: vsal1, name: "Protection sonore", details: "pour le tir")
 Vsarestrictionslist.create(vsarestriction_id: res3,vsalist_id: vsal1, name: "Protection sonore", details: "pour le tir")

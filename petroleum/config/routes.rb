@@ -1,4 +1,5 @@
 Petroleum::Application.routes.draw do
+  break if ARGV.join.include? 'assets:precompile'
   root :to => "home#index"
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config

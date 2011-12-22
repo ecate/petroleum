@@ -11,7 +11,11 @@ class Vsalist < ActiveRecord::Base
 	COURANTES = "Courantes"
 
 def conclu
-	Vsaconclusion.find(self.vsaconclusion_id).name
+	Vsaconclusion.where(:id => self.vsaconclusion_id).first.name
+end
+
+def conclubis
+	Vsaconclusion.find(self.vsaconclusion).name
 end
 
 end

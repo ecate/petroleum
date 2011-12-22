@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>README.rdoc</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            README.rdoc
+        </h1>
+        <ul class="files">
+            <li>README.rdoc</li>
+            <li>Last modified: 2011-11-23 09:32:58 +0000</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<h2 id="label-BitmaskAttributes"><a href="../classes/BitmaskAttributes.html">BitmaskAttributes</a></h2>
+
+<p>Transparent manipulation of bitmask attributes for ActiveRecord, based on
+the bitmask-attribute gem, which has been dormant since 2009. This updated
+gem work with Rails 3 and up (including Rails 3.1).</p>
+
+<h3 id="label-Installation">Installation</h3>
+
+<p>The best way to install is with RubyGems:</p>
+
+<pre>$ [sudo] gem install bitmask_attributes</pre>
+
+<p>Or better still, just add it to your Gemfile:</p>
+
+<pre>gem 'bitmask_attributes'</pre>
+
+<h3 id="label-Example">Example</h3>
+
+<p>Simply declare an existing integer column as a bitmask with its possible
+values.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">User</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">bitmask</span> :<span class="ruby-identifier">roles</span>, :<span class="ruby-identifier">as</span> =<span class="ruby-operator">&gt;</span> [:<span class="ruby-identifier">writer</span>, :<span class="ruby-identifier">publisher</span>, :<span class="ruby-identifier">editor</span>, :<span class="ruby-identifier">proofreader</span>]
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>You can then modify the column using the declared values without resorting
+to manual bitmasks.</p>
+
+<pre class="ruby"><span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">create</span>(:<span class="ruby-identifier">name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Bruce&quot;</span>, :<span class="ruby-identifier">roles</span> =<span class="ruby-operator">&gt;</span> [:<span class="ruby-identifier">publisher</span>, :<span class="ruby-identifier">editor</span>])
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">roles</span>
+<span class="ruby-comment"># =&gt; [:publisher, :editor]</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">roles</span> <span class="ruby-operator">&lt;&lt;</span> :<span class="ruby-identifier">writer</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">roles</span>
+<span class="ruby-comment"># =&gt; [:publisher, :editor, :writer]</span>
+</pre>
+
+<p>It’s easy to find out if a record has a given value:</p>
+
+<pre class="ruby"><span class="ruby-identifier">user</span>.<span class="ruby-identifier">roles?</span>(:<span class="ruby-identifier">editor</span>)
+<span class="ruby-comment"># =&gt; true</span>
+</pre>
+
+<p>You can check for multiple values (uses an `and` boolean):</p>
+
+<pre class="ruby"><span class="ruby-identifier">user</span>.<span class="ruby-identifier">roles?</span>(:<span class="ruby-identifier">editor</span>, :<span class="ruby-identifier">publisher</span>)
+<span class="ruby-comment"># =&gt; true</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">roles?</span>(:<span class="ruby-identifier">editor</span>, :<span class="ruby-identifier">proofreader</span>)
+<span class="ruby-comment"># =&gt; false</span>
+</pre>
+
+<p>Or, just check if any values are present:</p>
+
+<pre class="ruby"><span class="ruby-identifier">user</span>.<span class="ruby-identifier">roles?</span>
+<span class="ruby-comment"># =&gt; true</span>
+</pre>
+
+<p>You can get the list of values for any given attribute:</p>
+
+<pre class="ruby"><span class="ruby-constant">User</span>.<span class="ruby-identifier">values_for_roles</span>
+<span class="ruby-comment"># =&gt; [:writer, :publisher, :editor, :proofreader]</span>
+</pre>
+
+<h3 id="label-Named+Scopes">Named Scopes</h3>
+
+<p>A couple useful named scopes are also generated when you use `bitmask`:</p>
+
+<pre class="ruby"><span class="ruby-constant">User</span>.<span class="ruby-identifier">with_roles</span>
+<span class="ruby-comment"># =&gt; (all users with roles)</span>
+<span class="ruby-constant">User</span>.<span class="ruby-identifier">with_roles</span>(:<span class="ruby-identifier">editor</span>)
+<span class="ruby-comment"># =&gt; (all editors)</span>
+<span class="ruby-constant">User</span>.<span class="ruby-identifier">with_roles</span>(:<span class="ruby-identifier">editor</span>, :<span class="ruby-identifier">writer</span>)
+<span class="ruby-comment"># =&gt; (all users who are BOTH editors and writers)</span>
+<span class="ruby-constant">User</span>.<span class="ruby-identifier">with_any_roles</span>(:<span class="ruby-identifier">editor</span>, :<span class="ruby-identifier">writer</span>)
+<span class="ruby-comment"># =&gt; (all users who are editors OR writers)</span>
+</pre>
+
+<p>Find records without any bitmask set:</p>
+
+<pre class="ruby"><span class="ruby-constant">User</span>.<span class="ruby-identifier">without_roles</span>
+<span class="ruby-comment"># =&gt; (all users without a role)</span>
+<span class="ruby-constant">User</span>.<span class="ruby-identifier">no_roles</span>
+<span class="ruby-comment"># =&gt; (all users without a role)</span>
+</pre>
+
+<p>Find records without a specific attribute.</p>
+
+<pre class="ruby"><span class="ruby-constant">User</span>.<span class="ruby-identifier">without_roles</span>(:<span class="ruby-identifier">editor</span>)
+<span class="ruby-comment"># =&gt; (all users who are not editors)</span>
+</pre>
+
+<p>Note that “without_” only supports a single attribute argument, and the
+“no_” method does not support arguments.</p>
+
+<h3 id="label-Adding+Methods">Adding Methods</h3>
+
+<p>You can add your own methods to the bitmasked attributes (similar to named
+scopes):</p>
+
+<pre class="ruby"><span class="ruby-identifier">bitmask</span> :<span class="ruby-identifier">other_attribute</span>, :<span class="ruby-identifier">as</span> =<span class="ruby-operator">&gt;</span> [:<span class="ruby-identifier">value1</span>, :<span class="ruby-identifier">value2</span>] <span class="ruby-keyword">do</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">worked?</span>
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">first</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">other_attribute</span>.<span class="ruby-identifier">worked?</span>
+<span class="ruby-comment"># =&gt; true</span>
+</pre>
+
+<h3 id="label-Warning%3A+Modifying+possible+values">Warning: Modifying possible values</h3>
+
+<p>IMPORTANT: Once you have data using a bitmask, don’t change the order of
+the values, remove any values, or insert any new values in the `:as` array
+anywhere except at the end.  You won’t like the results.</p>
+
+<h3 id="label-Contributing">Contributing</h3>
+<ol><li>
+<p>Fork it.</p>
+</li><li>
+<p>Create a branch (`git checkout -b new-feature`)</p>
+</li><li>
+<p>Make your changes</p>
+</li><li>
+<p>Run the tests (`bundle install` then `bundle exec rake`)</p>
+</li><li>
+<p>Commit your changes (`git commit -am “Created new feature”`)</p>
+</li><li>
+<p>Push to the branch (`git push origin new-feature`)</p>
+</li><li>
+<p>Create a <a href="http://help.github.com/send-pull-requests/">pull
+request</a> from your branch.</p>
+</li><li>
+<p>Promote it. Get others to drop in and +1 it.</p>
+</li></ol>
+
+<h3 id="label-Credits">Credits</h3>
+
+<p>Thanks to <a href="https://github.com/bruce">Bruce Williams</a> and the
+following contributors of the bitmask-attribute plugin:</p>
+<ul><li>
+<p><a href="http://github.com/ambethia">Jason L Perry</a></p>
+</li><li>
+<p><a href="http://github.com/nfo">Nicolas Fouché</a></p>
+</li><li>
+<p><a href="http://github.com/IvanBuiko">Ivan Buiko</a></p>
+</li></ul>
+
+<h3 id="label-Copyright">Copyright</h3>
+
+<p>Copyright © 2007-2009 Bruce Williams &amp; 2011 Joel Moss. See LICENSE for
+details.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+    </div>
+  </body>
+</html>

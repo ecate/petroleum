@@ -5,7 +5,7 @@ class CreateSoldiers < ActiveRecord::Migration
       t.string :firstname
       t.string :usagename
       t.date :birthdate
-      t.boolean :active, :default => "France"
+      t.boolean :active
       t.boolean :ismale
       t.integer :payid
       t.integer :concertoid

@@ -1,0 +1,14 @@
+=== Version 0.2.4 - 2011-11-23 09:37:50 +0000
+
+Ivan Buiko (3):
+* add netbeans project files to .gitignore
+* latest versions in Gemfile.lock
+* don't validate attribute during creating table
+
+Joel Moss (3):
+* Merge pull request #3 from IvanBuiko/master
+* Added changeling tasks
+* Created docs
+
+
+

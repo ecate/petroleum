@@ -30,7 +30,7 @@ show :title => "VSA" do |vl|
     	row("Libelle") do vl.name end
     	row("Derniere VSA") do vl.iscurrent end
     	row("Date Examen") do vl.examdate end
-    	#row("Conclusion") do vl.conclu end
+    	row("Conclusion") do vl.conclubis end
     	row("Apte ESR") do vl.isapteESR end
     	row("Apte Service") do vl.isapteService end
     	row("Apte Tir") do vl.isapteTir end 

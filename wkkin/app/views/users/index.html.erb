@@ -1,0 +1,69 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Vousetes</th>
+    <th>Region</th>
+    <th>Ville</th>
+    <th>Pays</th>
+    <th>Orientation sexuelle</th>
+    <th>Zodiac</th>
+    <th>Silhouette</th>
+    <th>Yeux</th>
+    <th>Ethnie</th>
+    <th>Mobilites</th>
+    <th>Disponibilite</th>
+    <th>Bio</th>
+    <th>Libertinages</th>
+    <th>Recherches</th>
+    <th>Relation recherchee</th>
+    <th>Charte validee</th>
+    <th>Roles</th>
+    <th>Date naissance</th>
+    <th>Date naissance2</th>
+    <th>Zodiac2</th>
+    <th>Silhouette2</th>
+    <th>Ethnie2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+    <td><%= user.vousetes %></td>
+    <td><%= user.region %></td>
+    <td><%= user.ville %></td>
+    <td><%= user.pays %></td>
+    <td><%= user.orientation_sexuelle %></td>
+    <td><%= user.zodiac %></td>
+    <td><%= user.silhouette %></td>
+    <td><%= user.yeux %></td>
+    <td><%= user.ethnie %></td>
+    <td><%= user.mobilites %></td>
+    <td><%= user.disponibilite %></td>
+    <td><%= user.bio %></td>
+    <td><%= user.libertinages %></td>
+    <td><%= user.recherches %></td>
+    <td><%= user.relation_recherchee %></td>
+    <td><%= user.charte_validee %></td>
+    <td><%= user.roles %></td>
+    <td><%= user.date_naissance %></td>
+    <td><%= user.date_naissance2 %></td>
+    <td><%= user.zodiac2 %></td>
+    <td><%= user.silhouette2 %></td>
+    <td><%= user.ethnie2 %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>

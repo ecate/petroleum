@@ -1,0 +1,127 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @user.avatar.url(:thumb) %>
+
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Vousetes:</b>
+  <%= @user.vousetes %>
+</p>
+
+<p>
+  <b>Region:</b>
+  <%= @user.region %>
+</p>
+
+<p>
+  <b>Ville:</b>
+  <%= @user.ville %>
+</p>
+
+<p>
+  <b>Pays:</b>
+  <%= @user.pays %>
+</p>
+
+<p>
+  <b>Orientation sexuelle:</b>
+  <%= @user.orientation_sexuelle %>
+</p>
+
+<p>
+  <b>Zodiac:</b>
+  <%= @user.zodiac %>
+</p>
+
+<p>
+  <b>Silhouette:</b>
+  <%= @user.silhouette %>
+</p>
+
+<p>
+  <b>Yeux:</b>
+  <%= @user.yeux %>
+</p>
+
+<p>
+  <b>Ethnie:</b>
+  <%= @user.ethnie %>
+</p>
+
+<p>
+  <b>Mobilites:</b>
+  <%= @user.mobilites %>
+</p>
+
+<p>
+  <b>Disponibilite:</b>
+  <%= @user.disponibilite %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @user.bio %>
+</p>
+
+<p>
+  <b>Libertinages:</b>
+  <%= @user.libertinages %>
+</p>
+
+<p>
+  <b>Recherches:</b>
+  <%= @user.recherches %>
+</p>
+
+<p>
+  <b>Relation recherchee:</b>
+  <%= @user.relation_recherchee %>
+</p>
+
+<p>
+  <b>Charte validee:</b>
+  <%= @user.charte_validee %>
+</p>
+
+<p>
+  <b>Roles:</b>
+  <%= @user.roles %>
+</p>
+
+<p>
+  <b>Date naissance:</b>
+  <%= @user.date_naissance %>
+</p>
+
+<p>
+  <b>Date naissance2:</b>
+  <%= @user.date_naissance2 %>
+</p>
+
+<p>
+  <b>Zodiac2:</b>
+  <%= @user.zodiac2 %>
+</p>
+
+<p>
+  <b>Silhouette2:</b>
+  <%= @user.silhouette2 %>
+</p>
+
+<p>
+  <b>Ethnie2:</b>
+  <%= @user.ethnie2 %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,193 @@
+<%= form_for @user, :html => {:multipart => true} do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "erreur") %> nous empêchent de sauvegarder votre profil :</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <table>
+      <tr>
+        <th><%= f.label :username %></th>
+        <td><%= f.text_field :username %></div></td>
+      </tr>
+      <tr>
+        <th><%= f.label :email %></th>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      </tr>
+      <tr>
+        <th> Votre photo de profil</th>
+        <td><%= f.file_field :avatar %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :region %></th>
+        <td><%= f.collection_select :region, User.values_for_region, :to_s, :to_s %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :pays %></th>
+        <td><%= f.collection_select :pays, User.values_for_pays, :to_s, :to_s %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :date_naissance %></th>
+        <td><%= f.date_select :date_naissance, :start_year => Date.today.year - 23, :end_year => Date.today.year - 90 %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :ethnie %></th>
+        <td><%= f.collection_select :ethnie, User.values_for_ethnie, :to_s, :to_s %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :zodiac %></th>
+        <td><%= f.collection_select :zodiac, User.values_for_zodiac, :to_s, :to_s %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :silhouette %></th>
+        <td><%= f.collection_select :silhouette, User.values_for_silhouette, :to_s, :to_s %></td>
+      </tr>
+
+
+      <tr>
+        <th><%= f.label :vousetes %></th>
+        <td>
+          <%= f.select :vousetes, User.values_for_vousetes, {}, {
+                  :onchange => "if (this.value == 'couplehetero' || this.value == 'coupletransetfemme' || this.value == 'coupletransethomme' || this.value == 'couplehomme' || this.value == 'couplefemme') {
+
+                    $('#partenaire').show();
+                     }
+                    else { $('#partenaire').hide(); }"} %>
+
+        </td>
+      </tr>
+
+
+
+
+      <tr>
+        <th><%= f.label :orientation_sexuelle %></th>
+        <td><%= f.collection_select :orientation_sexuelle, User.values_for_orientation_sexuelle, :to_s, :to_s %></td>
+      </tr>
+
+
+      <tr>
+        <th><%= f.label :mobilites %></th>
+        <td>
+          <% for mobilite in User.values_for_mobilites %>
+              <%= check_box_tag "user[mobilites][]", mobilite, @user.mobilites?(mobilite) %>
+              <%= h mobilite.to_s %>
+              <br/>
+          <% end %>
+          <%= hidden_field_tag "user[mobilites][]", "" %>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :disponibilite %></th>
+        <td>
+          <% for dispo in User.values_for_disponibilite %>
+              <%= check_box_tag "user[disponibilite][]", dispo, @user.disponibilite?(dispo) %>
+              <%= h dispo.to_s %>
+              <br/>
+          <% end %>
+          <%= hidden_field_tag "user[disponibilite][]", "" %>
+        </td>
+      </tr>
+
+      <!--<tr>-->
+        <!--<th><%= f.label :bio %></th>-->
+        <!--<td><%= f.text_area :bio, :rows => 4, :cols => 60, :maxlength => 140 %></td>-->
+      <!--</tr>-->
+
+
+      <!--<tr>-->
+        <!--<th><%= f.label :recherches %></th>-->
+        <!--<td>-->
+          <!--<% boucle = 0 %>-->
+          <!--<% for recher in User.values_for_recherches %>-->
+              <!--<%= check_box_tag "user[recherches][]", recher, @user.recherches?(recher) %>-->
+              <!--<%= h recher.to_s %>-->
+              <!--<br/>-->
+          <!--<% end %>-->
+          <!--<%= hidden_field_tag "user[recherches][]", "" %>-->
+        <!--</td>-->
+      <!--</tr>-->
+
+      <!--<tr>-->
+        <!--<th><%= f.label :relation_recherchee %></th>-->
+        <!--<td>-->
+          <!--<% for rela in User.values_for_relation_recherchee %>-->
+              <!--<%= check_box_tag "user[relation_recherchee][]", rela, @user.relation_recherchee?(rela) %>-->
+              <!--<%= h rela.to_s %>-->
+              <!--<br/>-->
+          <!--<% end %>-->
+          <!--<%= hidden_field_tag "user[relation_recherchee][]", "" %>-->
+        <!--</td>-->
+      <!--</tr>-->
+
+      <!--<tr>-->
+        <!--<th><%= f.label :charte_validee %></th>-->
+        <!--<td><%= f.check_box :charte_validee %></td>-->
+      <!--</tr>-->
+
+      <!--<tr>-->
+        <!--<th><%= f.label :libertinages %></th>-->
+        <!--<td>-->
+          <!--<%= hidden_field_tag "user[libertinages][]", "" %>-->
+          <!--&lt;!&ndash;affichage de la liste de libertinages sur 4 colonnes, utilisation des modulo pour fermer la "colonne"&ndash;&gt;-->
+          <!--<table>-->
+            <!--<% boucle = 0 %>-->
+            <!--<% for liber in User.values_for_libertinages %>-->
+                <!--<% if boucle % 4 == 0 %>-->
+                    <!--<tr>-->
+                <!--<% end %>-->
+
+                <!--<td>-->
+                  <!--<%= check_box_tag "user[libertinages][]", liber, @user.libertinages?(liber) %>-->
+                  <!--<%= h liber.to_s %>-->
+                <!--</td>-->
+                <% if boucle % 4 == 3 %> </tr>
+                <!--<% end %>-->
+                <!--<% boucle = boucle + 1 %>-->
+            <!--<% end %>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+    </table>
+
+
+      <div id="partenaire">
+
+          <h3> Dites-nous en un peu plus sur votre partenaire </h3>
+          <tr>
+            <th><%= f.label :date_naissance2 %></th>
+            <td><%= f.date_select :date_naissance2, :start_year => Date.today.year - 23, :end_year => Date.today.year - 90 %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :ethnie2 %></th>
+            <td><%= f.collection_select :ethnie2, User.values_for_ethnie, :to_s, :to_s %></td>
+          </tr>
+          <tr>
+            <th> <%= f.label :zodiac2 %></th>
+            <td><%= f.collection_select :zodiac2, User.values_for_zodiac, :to_s, :to_s %></td>
+          </tr>
+
+          <tr>
+            <th><%= f.label :silhouette2 %></th>
+            <td> <%= f.collection_select :silhouette2, User.values_for_silhouette, :to_s, :to_s %></td>
+          </tr>
+
+
+      </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

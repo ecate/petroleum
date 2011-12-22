@@ -11,7 +11,7 @@ index do
   column "Personnel" do |esrlist| esrlist.soldier.name end
   column "Dernier ESR signe", :iscurrent
   column "Date signature", :signaturedate
-  column "Date echeance", :enddate 
+  column "Date echeance", :enddate
   column "Commentaires", :comment
   column "Controle associe" do |esrlist| link_to(esrlist.esrcontrol.name, admin_esrcontrol_path(esrlist.esrcontrol)) end
   default_actions

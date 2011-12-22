@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20111120123526) do
     t.string   "firstname"
     t.string   "usagename"
     t.date     "birthdate"
-    t.boolean  "active",              :default => false
+    t.boolean  "active"
     t.boolean  "ismale"
     t.integer  "payid"
     t.integer  "concertoid"
