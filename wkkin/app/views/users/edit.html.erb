@@ -1,6 +1,10 @@
+
 <div id="rightboxes">
-<div class="box2">
- <p class="rotate">
+<div id="avatar_profil" class="boximage">
+    <% if !@user.avatar.nil?%>
+      <script type="text/javascript">affiche_image_profil(<%@user.avatar.url(:medium)%>); </script>
+    <% end %>
+      <p class="rotate">
    <a href="#"><span>Mon profil</span> </a>
  </p>
 </div>

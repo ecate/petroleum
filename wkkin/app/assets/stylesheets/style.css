@@ -49,12 +49,23 @@ h1 {
     border: solid 1px #ac9f87;
 }
 
-
 #rightboxes {
     float: right;
     width: 272px;
     float: right;
 }
+
+#rightboxes .boximage {
+
+    /*background: url("/assets/rightimg2.jpg") 10px 10px no-repeat;*/
+    width: 250px;
+    height: 90px;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: solid 1px #ac9f87;
+}
+
+
 
 #rightboxes .box1 {
     background: url("/assets/rightimg1.jpg") 10px 10px no-repeat;
@@ -222,6 +233,9 @@ tr {
 td {
     padding-top : 1em;
     /*padding-bottom: 1em;*/
+}
+.partenaire {
+    color: #832845;
 }
 
 .subhead {

@@ -57,9 +57,7 @@ class User < ActiveRecord::Base
   validates :email, :format => { :with => email_regex }
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :avatar, :email, :password, :password_confirmation, :remember_me, :vousetes, :region, :ville,:pays, :orientation_sexuelle, :zodiac, :silhouette,:yeux, :ethnie,:mobilites,:disponibilite,:bio,:libertinages,:recherches,:relation_recherchee,:charte_validee,:roles,:date_naissance,:date_naissance2,:zodiac2,:silhouette2,:ethnie2
-
-
+  attr_accessible :username, :avatar, :email, :password, :password_confirmation, :remember_me, :vousetes, :region, :ville,:pays, :orientation_sexuelle, :zodiac, :silhouette, :ethnie, :mobilites, :disponibilite, :bio, :libertinages, :recherches, :relation_recherchee, :charte_validee, :roles, :date_naissance, :date_naissance2, :zodiac2, :silhouette2, :ethnie2
   attr_accessible :avatar_file_name, :avatar_content_type, :avatar_file_size, :avatar_updated_at
 
   validates :email, :presence => true, :uniqueness => true
@@ -75,8 +73,11 @@ class User < ActiveRecord::Base
     bitmask :vousetes, :as => [:homme, :femme, :couplehetero, :coupletransetfemme, :coupletransethomme, :travesti, :trans, :couplehomme, :couplefemme]
     bitmask :orientation_sexuelle, :as => [:heterosexuelle, :bicurieux, :bisexuelle, :homosexuelle, :coupledontfemmebi, :coupldonthommebi]
     bitmask :zodiac, :as => [:belier, :taureaux, :gemaux, :cancer, :lion, :vierge, :balance, :scorpion, :sagittaire, :capricorne, :verseau, :poisson]
+    bitmask :zodiac2, :as => [:belier, :taureaux, :gemaux, :cancer, :lion, :vierge, :balance, :scorpion, :sagittaire, :capricorne, :verseau, :poisson]
     bitmask :silhouette, :as => [:mince, :normale, :sportive, :genereuse, :ronde]
+    bitmask :silhouette2, :as => [:mince, :normale, :sportive, :genereuse, :ronde]
     bitmask :ethnie, :as => [:europeenne, :antillaise, :metisse,:magrebine,:africaine,:asiatique,:hispanique,:indienne,:arabe]
+    bitmask :ethnie2, :as => [:europeenne, :antillaise, :metisse,:magrebine,:africaine,:asiatique,:hispanique,:indienne,:arabe]
     bitmask :mobilites, :as => [:sedeplacer, :recevoir, :auclub, :touslieux, :virtuel]
     bitmask :libertinages, :as => [:analinctus, :ejaculation_feminine, :jeuxeau, :double_penetration, :jeuxecoliere, :sexualite_groupe_orgie, :gang_bang, :language_vulgaire, :soumis, :echangisme, :transsexuelle, :fetichisme_lingerie, :phone_sexe, :esclave, :melangisme, :bondage, :humiliation, :fet_latex_cuir, :sado_maso, :jeux_cire, :cuckolding, :scato, :masturbation, :cunnilingus, :sodomiser, :voyeurisme, :facial, :talons_hauts, :gode_ceinture, :lieux_publics, :lieux_insolites, :domination_soumission, :jeux_roles, :etre_dominant, :etre_sodomise, :etre_photographie_filme, :urophilie, :fisting, :facesitting, :bukkake, :piercing, :fet_pied, :jeux_colporteur, :fet_smoking, :abdl_couch_culotte, :femme_mature, :erotisme, :femme_ronde, :exhib, :jeux_infirmiere, :kamasutra, :cumshot, :viol_simule, :fessee, :interracial, :travesti, :collier_laisse, :maitre, :lactation_erotique, :homme_mature, :tantrisme, :candaulisme, :agoraphilie]
     bitmask :disponibilite, :as => [:matinee, :midi, :apresmidi, :soiree, :nuit, :weekend, :libre]
@@ -93,8 +94,8 @@ class User < ActiveRecord::Base
   def encouple
     self.vousetes?(:couplehetero) || self.vousetes?(:coupletransetfemme) || self.vousetes?(:coupletransethomme) || self.vousetes?(:couplehomme) || self.vousetes?(:couplefemme)
   end
-  def unepersonne
-    self.vousetes?(:homme) || self.vousetes?(:femme) || self.vousetes?(:travesti) || self.vousetes?(:trans)
-  end
+
+
+
 
 end
